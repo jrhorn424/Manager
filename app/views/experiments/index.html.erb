@@ -1,0 +1,26 @@
+<h1>Experiments</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @experiments.each do |experiment| %>
+      <tr>
+        <td><%= experiment.id %></td>
+        <td><%= link_to experiment.title, experiment_path(experiment) %></td>
+        <td><%= experiment.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_experiment_path(experiment), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', experiment_path(experiment), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_experiment_path, :class => 'btn btn-primary' %>
